@@ -1,0 +1,32 @@
+/* NavigationBar.css */
+
+.navbar {
+    background-color: darkslategray;
+    transition: background-color 0.3s ease;
+    padding: 20px 0; /* Increase vertical padding */
+}
+
+.navbar.scrolled {
+    background-color: transparent;
+}
+
+.navbar-link {
+    color: #ffffff;
+    margin-right: 25px; /* Increase horizontal margin */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 20px; /* Increase font size */
+    padding: 15px 20px; /* Increase padding */
+}
+
+.navbar-link:hover {
+    color: darkseagreen;
+}
+
+.active.navbar-link {
+    font-weight: bold;
+}
+
+.navbar-text {
+    margin-left: auto;
+}

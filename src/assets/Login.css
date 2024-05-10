@@ -1,0 +1,60 @@
+/* Login.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('backgroundSimple.png'); /* Background image */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-color: #f8f9fa; /* Fallback background color */
+}
+
+.logincard {
+    width: 400px;
+    background-color: #ffffff; /* Card background color */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Card shadow */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da; /* Input border color */
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Input border color on focus */
+    outline: none;
+}
+
+.form-check-label {
+    padding-left: 20px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Button text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+.forgot-password a {
+    color: #007bff; /* Link color */
+}

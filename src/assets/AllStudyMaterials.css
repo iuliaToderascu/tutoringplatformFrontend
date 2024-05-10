@@ -1,0 +1,25 @@
+.objects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 1000px;
+  }
+  
+  .object-card {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: 300px; /* Adjust width as needed */
+  }
+  
+  .object-title {
+    margin-bottom: 10px;
+  }
+  
+  .object-details {
+    font-size: 0.9rem;
+  }
+  
