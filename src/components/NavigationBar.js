@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage"
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import AllStudyMaterials from "../pages/AllStudyMaterials";
+import UploadStudyMaterial from '../pages/UploadStudyMaterial';
 import Logout from "./Logout";
 import "../assets/NavigationBar.css"; // Import CSS file
 
@@ -56,6 +57,7 @@ export const NavigationBar = () => {
                 <Route path={"/signup"} element={<SignUpPage />} />
                 <Route path={"/logout"} element={<Logout />} />
                 <Route path={"/studymaterials"} element={<AllStudyMaterials />} />
+                <Route path={"/studyMaterialForm"} element={<UploadStudyMaterial />} />
             </Routes>
         </BrowserRouter>
     )
