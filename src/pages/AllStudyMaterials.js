@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import StudyMaterialService from '../services/StudyMaterialService';
 import '../assets/AllStudyMaterials.css';
 
 const AllObjectsPage = () => {
@@ -14,19 +13,30 @@ const AllObjectsPage = () => {
 
   return (
     <div className="objects-container">
-      {console.log('objects before render:', objects)}
-      {objects.length > 0 && objects.map((object, index) => (
+    {console.log('objects before render:', objects)}
+    {objects.length > 0 &&
+      objects.map((object, index) => (
         <div key={index} className="object-card">
-          <div className="object-title">
-            <h2>{object.title}</h2>
-          </div>
-          <div className="object-details">
-            <p>Education Level: {object.educationLevel}</p>
+          {object.coverImageUrl && (
+            <img
+              src={object.coverImageUrl}
+              alt={object.title + " Cover Image"}
+              className="object-card-image"
+            />
+          )}
+          <div className="object-card-content">
+            <div className="object-title">
+              <h2>{object.title}</h2>
+            </div>
+            <div className="object-details">
+              <p>Education Level: {object.educationLevel}</p>
+              {/* Add more details here if needed */}
+            </div>
           </div>
         </div>
       ))}
-    </div>
-  );
+  </div>
+);
 };
 
 export default AllObjectsPage;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
 
 import HomePage from "../pages/HomePage"
@@ -13,6 +13,7 @@ import "../assets/NavigationBar.css"; // Import CSS file
 export const NavigationBar = () => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect (() => {
         const onScroll = () => {
@@ -29,6 +30,11 @@ export const NavigationBar = () => {
 
     const onUpdateActivateLink = (value) => {
         setActiveLink(value)
+    }
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+        // You can perform any search-related actions here, such as filtering data or making API calls with the search query.
     }
 
     return (
@@ -48,6 +54,17 @@ export const NavigationBar = () => {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
+                <Form className="d-flex">
+                            <FormControl
+                                type="search"
+                                placeholder="Search"
+                                className="mr-2"
+                                aria-label="Search"
+                                value={searchQuery}
+                                onChange={handleSearch}
+                            />
+                            <Button variant="outline-success">Search</Button>
+                        </Form>
             </Navbar>
 
             <Routes>

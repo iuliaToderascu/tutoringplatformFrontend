@@ -1,9 +1,11 @@
 /* NavigationBar.css */
 
 .navbar {
+    display: flex;
+    justify-content: space-between; /* Align items evenly */
     background-color: darkslategray;
     transition: background-color 0.3s ease;
-    padding: 20px 0; /* Increase vertical padding */
+    padding: 20px 20px 20px 0; /* Increase vertical padding and add right padding */
 }
 
 .navbar.scrolled {
@@ -12,7 +14,6 @@
 
 .navbar-link {
     color: #ffffff;
-    margin-right: 25px; /* Increase horizontal margin */
     text-decoration: none;
     transition: color 0.3s ease;
     font-size: 20px; /* Increase font size */
@@ -27,6 +28,26 @@
     font-weight: bold;
 }
 
-.navbar-text {
-    margin-left: auto;
-}
+.form-search {
+    display: flex;
+    align-items: center; 
+    margin-left: 50px;/* Align items vertically */
+  }
+  
+  .search-input {
+    margin-right: 10px; /* Add some spacing between input and button */
+  }
+  
+  .search-button {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #ffffff;
+    color: darkslategray;
+  }

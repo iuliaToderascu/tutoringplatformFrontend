@@ -17,16 +17,14 @@ const getAll = () => {
     // return http.get('studyMaterials');
 };
 
-const createStudyMaterial = (title, educationLevel, tags, contentFile, coverImageFile) => {
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('educationLevel', educationLevel);
-    formData.append('tags', tags);
-    formData.append('contentFile', contentFile);
-    formData.append('coverImageFile', coverImageFile);
+const createStudyMaterial = (studyMaterial) => {
+    return http.post("https://localhost:7071/studymaterials", studyMaterial, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+};
 
-    return http.post("https://localhost:7071/studymaterials", formData);
-}
 
 const StudyMaterialService = {
     get,
@@ -34,4 +32,5 @@ const StudyMaterialService = {
     getAll,
     createStudyMaterial
 };
+
 export default StudyMaterialService;

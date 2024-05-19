@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import StudyMaterialService from '../services/StudyMaterialService';
 import '../assets/UploadStudyMaterial.css';
+import DOMPurify from 'dompurify';
 
 const UploadStudyMaterial = () => {
   const [title, setTitle] = useState('');
   const [educationLevel, setEducationLevel] = useState('');
   const [tags, setTags] = useState('');
-  const [contentFile, setContentFile] = useState(null);
-  const [coverImageFile, setCoverImageFile] = useState(null);
+  const [contentUrl, setContentUrl] = useState('');
+  const [coverImageUrl, setCoverImageUrl] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -16,23 +16,35 @@ const UploadStudyMaterial = () => {
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('educationLevel', educationLevel);
-      formData.append('tags', tags);
-      formData.append('contentFile', contentFile);
-      formData.append('coverImageFile', coverImageFile);
+      const studyMaterial = {
+        tutorId: '1', // Set tutorId to 1 for now
+        title: DOMPurify.sanitize(title),
+        educationLevel: DOMPurify.sanitize(educationLevel),
+        tags: tags.split(',').map(tag => DOMPurify.sanitize(tag.trim())),
+        coverImageUrl: DOMPurify.sanitize(coverImageUrl),
+        contentUrl: DOMPurify.sanitize(contentUrl),
+      };
 
-      await StudyMaterialService.createStudyMaterial(formData);
-      // Reset form fields
+      const response = await fetch('https://localhost:7071/studymaterials', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(studyMaterial),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to upload study material.');
+      }
+
       setTitle('');
       setEducationLevel('');
       setTags('');
-      setContentFile(null);
-      setCoverImageFile(null);
+      setCoverImageUrl('');
+      setContentUrl('');
       setErrorMessage('');
     } catch (error) {
-      setErrorMessage('Failed to upload study material.');
+      setErrorMessage(error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -73,22 +85,22 @@ const UploadStudyMaterial = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="contentFile">Content File:</label>
+          <label htmlFor="contentUrl">Content URL:</label>
           <input
-            type="file"
-            id="contentFile"
-            accept="video/*,application/pdf,image/*"
-            onChange={(e) => setContentFile(e.target.files[0])}
+            type="url"
+            id="contentUrl"
+            value={contentUrl}
+            onChange={(e) => setContentUrl(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="coverImageFile">Cover Image File:</label>
+          <label htmlFor="coverImageUrl">Cover Image URL:</label>
           <input
-            type="file"
-            id="coverImageFile"
-            accept="image/*"
-            onChange={(e) => setCoverImageFile(e.target.files[0])}
+            type="url"
+            id="coverImageUrl"
+            value={coverImageUrl}
+            onChange={(e) => setCoverImageUrl(e.target.value)}
           />
         </div>
         <button type="submit" disabled={isSubmitting}>
