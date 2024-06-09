@@ -34,7 +34,6 @@ export const NavigationBar = () => {
 
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
-        // You can perform any search-related actions here, such as filtering data or making API calls with the search query.
     }
 
     return (
@@ -63,7 +62,7 @@ export const NavigationBar = () => {
                                 value={searchQuery}
                                 onChange={handleSearch}
                             />
-                            <Button variant="outline-success">Search</Button>
+                           <Button variant="outline-success" onClick={() => setSearchQuery(searchQuery)}>Search</Button>
                         </Form>
             </Navbar>
 
